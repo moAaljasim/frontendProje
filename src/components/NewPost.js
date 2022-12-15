@@ -1,5 +1,46 @@
-import classes from "./Slidebar.css";
+import "./Slidebar.css";
+import { AuthContext } from "../context/AuthContext";
+import {  useContext, useState } from "react";
+import { PostContext } from "../context/PostContext";
+
+
+
+
 const NewPost = () => {
+    const { token } = useContext(AuthContext);
+    const {addPost} =useContext(PostContext)
+
+        const[content,setcontent]=useState('')
+        const handleOnChange = (e) => {
+            setcontent(e.target.value);
+           
+           
+        };
+            
+
+    const  creatNewPost = async ()=>{
+        const response = await fetch(`http://ferasjobeir.com/api/posts`, {
+            method: "post",
+            headers: {
+              'Content-Type': 'application/json',
+             "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                content: content
+            }),
+          });
+          const json = await response.json()
+          
+         window.alert(json.messages)
+        if(json.success){
+            addPost(json.data)
+            setcontent('')
+           
+        }
+     
+       
+    }
+ 
     return( 
  <div className="content" >
  <div className="hcon">
@@ -12,10 +53,10 @@ const NewPost = () => {
            
          
          <div className="text">
-             <textarea placeholder="Waht is happening?">
+             <textarea onChange={handleOnChange} value={content} placeholder="Waht is happening?">
 
              </textarea>
-             <button  >Create post</button>
+             <button onClick={()=>creatNewPost()} >Create post</button>
            
          </div>
      </div>

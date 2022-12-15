@@ -1,20 +1,23 @@
-import classes from "./content.css";
+import "./content.css";
 import axios from "axios";
 import React  from "react";
 import { useEffect ,useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import SinglePost from './SinglePost';
+import { PostContext } from "../context/PostContext";
 
 
 
 
 const Content = () => {
   const { token } = useContext(AuthContext);
-    const [posts,setposts]= useState([]) 
+  const {addPosts, posts} =useContext(PostContext)
+const [counter,setCounter]=useState(1)
     
     useEffect(()=>{
       const getPosts = async ( ) => {
         const response = await fetch(
-          `http://ferasjobeir.com/api/posts`,
+          `http://ferasjobeir.com/api/posts?page=${counter}`,
           {
             method: "get",
             headers: {
@@ -24,14 +27,15 @@ const Content = () => {
         );
         const json = await response.json();
     
-        setposts([...posts, ...json.data.data]);
+        addPosts(json.data.data)
+        console.log(posts)
       };
       
       
       getPosts()
       
-    },[])
-   console.log(posts)
+    },[counter])
+  // console.log(posts)
     
    
  // posts.map((post, i) => {
@@ -41,29 +45,12 @@ const Content = () => {
    <div className="conten">
     {
       posts.map((post, i) => (
-        <div key={post.id} className="post">
-            <img src={post?.user?.avatar}/>
-            <div className="postdetailes">
-                <h5>{post.user.name}</h5>
-                <p>{post.content}</p>
-                <h6>{post.created_at}</h6>
-               
-                <div className="comendet">
-                  
-                  <div className="coment">
-                    <span class="material-symbols-outlined">favorite</span>
-                    <p>{post.likes_count}</p>
-                    </div>
-                  <div className="like"><span class="material-symbols-outlined">mode_comment</span>
-                  <p>{post.comments_count}</p></div>
-                    
-
-                </div>
-            </div>
-          {/* <h2>{posts.content}</h2> */}
-      </div>
+      
+        <SinglePost post={post}/>
       ))
     }
+
+    <button onClick={()=>setCounter(counter+1)}>clik</button>
        
    </div>
 
