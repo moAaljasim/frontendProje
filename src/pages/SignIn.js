@@ -2,6 +2,7 @@ import classes from './signup.css'
 import {  useNavigate } from "react-router-dom";
 import { useState,useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { Link } from "react-router-dom"
 
 
 const SignIn = () => {
@@ -10,6 +11,7 @@ const  navigate = useNavigate('');
 const [email, setEmail]=useState("")
 const [password, setPassword]=useState("")
 const [userData, setUserData] = useState({
+  
   email: "",
   password: ""
 });
@@ -55,10 +57,12 @@ const [userData, setUserData] = useState({
 
             <label Htmlfor="password"> Password</label>
             <input type="password" id="password" name="password"   value={password} onChange={(e)=> setPassword(e.target.value)} ></input>
-
-           
+              <div className='inp'>
+              <Link to={'/'}  type="submit"  value="login">register</Link>
             <button id="login" type="submit" value="Submit">login</button>
-           
+   
+              </div>
+                    
         </form>
     </div>
   );

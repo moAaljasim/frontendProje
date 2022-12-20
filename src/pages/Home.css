@@ -11,12 +11,10 @@
   }
 header{
     display: flex;
-    
     position: absolute;
     top: 0;
     left: 0;
     width: 30%;
-    border: 2px solid green;
     height: 600px;
 }
   a{
@@ -94,7 +92,7 @@ header{
     top: 60px;
     left:65px;
     width: 100%;
-    border-bottom: 1px solid #f3f4f5;
+    /* border-bottom: 1px solid #f3f4f5; */
 
   }
   .text button{
@@ -111,7 +109,7 @@ header{
     border: none;
     padding: 0px 0px 50px 0px;
     outline: none;
-     resize: none;
+    resize: none;
   }
   .home{
     color:#1d9bf0 ;
@@ -126,4 +124,12 @@ header{
   #color:hover{
     color:#1d9bf0 ;
   }
- 
+
+
+  @media screen and (max-width: 768px){
+    header{
+      display: none;
+      background-color: #1d9bf0;
+    }
+    
+  }

@@ -12,7 +12,7 @@ import { PostContext } from "../context/PostContext";
 const Content = () => {
   const { token } = useContext(AuthContext);
   const {addPosts, posts} =useContext(PostContext)
-const [counter,setCounter]=useState(1)
+  const [counter,setCounter]=useState(1)
     
     useEffect(()=>{
       const getPosts = async ( ) => {
@@ -28,7 +28,7 @@ const [counter,setCounter]=useState(1)
         const json = await response.json();
     
         addPosts(json.data.data)
-        console.log(posts)
+       
       };
       
       

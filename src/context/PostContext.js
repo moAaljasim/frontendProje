@@ -12,9 +12,16 @@ const PostManager = ({children}) => {
     }
 
     const addPost =(newPost)=>{
-      setPosts([newPost, ...posts])
+      setPosts([newPost, ...posts]) 
       
     }
+
+    const editPost =(newPost)=> {
+        const newPosts = [...posts]
+        const index = newPosts.findIndex(item => item.id == newPost.id)
+        newPosts[index] = newPost
+        setPosts(newPosts)
+      }
 
 
 
@@ -23,7 +30,8 @@ const PostManager = ({children}) => {
         <PostContext.Provider value={{
             posts,
             addPost,
-            addPosts
+            addPosts,
+            editPost
         }}>
             {children}
         </PostContext.Provider>

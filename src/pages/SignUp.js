@@ -61,7 +61,7 @@ const  register = async  (e)=>{
             <label Htmlfor="confPassword"> Password Confirmation</label>
             <input type="password" id="cpassword" name="confPassword"  value={confPassword} onChange={(e)=> setConfPassword(e.target.value)}></input>
            <div className="inp">
-        <Link to={'signin'}  type="submit"  value="login">login</Link>
+           <Link to={'signin'}  type="submit"  value="login">login</Link>
            <button  id="reg" type="submit" value="register"> register</button>
            </div>
             

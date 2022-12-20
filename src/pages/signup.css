@@ -58,9 +58,11 @@ img {
 .inp {
   width: 80%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding-top: 21px;
-padding-left: 31px;
+  padding-left: 31px;
+  align-items: center;
+
 }
 #login {
     height: 30px;

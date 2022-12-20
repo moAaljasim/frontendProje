@@ -1,6 +1,6 @@
+import "../pages/Home.css";
 import React from 'react'
-import classes from "./Slidebar.css";
-import { Link ,useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import  {useContext} from "react";
 import { AuthContext } from "../context/AuthContext";
 
@@ -13,7 +13,10 @@ const Sidebar = () => {
         <nav>
           <img className="img" src="https://ferasjobeir.com/frontend-app/static/media/logo.1bb8db420e540d66b7c4a6a8350ca833.svg"></img>
           <div className="icon">
-            <a className="home" ><span class="material-symbols-outlined">home</span>Home</a>
+            <a className="home" onClick={()=> {
+            
+              navigator("/")
+            }} ><span class="material-symbols-outlined">home</span>Home</a>
             <a id="color"><span class="material-symbols-outlined">mail</span>messages</a>
             <a id="color"><span class="material-symbols-outlined">bookmarks</span>bookmarks</a>
             <a id="color"><span class="material-symbols-outlined">explore</span>explore</a>
